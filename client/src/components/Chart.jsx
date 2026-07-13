@@ -21,19 +21,29 @@ ChartJS.register(
 
 function AdminChart({ users }) {
 
-  const data = {
-    labels: users.map(user => user.name),
+const data = {
 
-    datasets: [
-      {
-        label: "Images Generated",
+  labels: users.map(user => user.username),
 
-        data: users.map(
-          user => user.totalImages || 0
-        ),
-      }
-    ]
-  };
+  datasets: [
+
+    {
+
+      label: "Images Generated",
+
+      data: users.map(
+
+        user => user.totalImages
+
+      ),
+
+      backgroundColor: "#8b5cf6"
+
+    }
+
+  ]
+
+};
 
   return (
 

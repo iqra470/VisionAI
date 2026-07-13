@@ -1,28 +1,6 @@
 const mongoose = require("mongoose");
 
-// const imageHistorySchema = new mongoose.Schema({
 
-//   userId: {
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: "User",
-//     required: true
-//   },
-
-//   originalImage: String,
-
-//   caption: String,
-
-//   prompt: String,
-
-//   generatedImage: String,
-
-//   clipScore: Number,
-
-//   createdAt: {
-//     type: Date,
-//     default: Date.now
-//   },
-// });
 const imageHistorySchema = new mongoose.Schema({
 
   userId: {

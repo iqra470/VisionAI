@@ -10,20 +10,23 @@ exports.getAllUsers = async (req, res) => {
     const users = await User.aggregate([
 
       {
+
         $lookup: {
 
-          from: "ImageHistory",
+          from: "imagehistories",
 
           localField: "_id",
 
-          foreignField: "user",
+          foreignField: "userId",
 
           as: "images"
 
         }
+
       },
 
       {
+
         $project: {
 
           username: 1,
@@ -35,10 +38,13 @@ exports.getAllUsers = async (req, res) => {
           createdAt: 1,
 
           totalImages: {
+
             $size: "$images"
+
           }
 
         }
+
       }
 
     ]);
@@ -50,7 +56,9 @@ exports.getAllUsers = async (req, res) => {
   catch (error) {
 
     res.status(500).json({
+
       message: error.message
+
     });
 
   }
@@ -69,16 +77,16 @@ exports.getAdminStats = async (req, res) => {
     const results =
       await Result.find();
 
-    const averageScore =
-      results.length > 0
-        ? (
-            results.reduce(
-              (sum, item) =>
-                sum + item.similarityScore,
-              0
-            ) / results.length
-          ).toFixed(2)
-        : 0;
+   const averageScore =
+  results.length > 0
+    ? (
+        results.reduce(
+          (sum, item) =>
+            sum + (item.clipScore || 0),
+          0
+        ) / results.length
+      ).toFixed(2)
+    : 0;
 
     res.json({
 
@@ -123,34 +131,26 @@ exports.deleteUser = async (req, res) => {
   }
 
 };
-exports.getRecentActivity = async(req,res)=>{
+exports.getRecentActivity = async (req, res) => {
 
-  try{
+  try {
 
-    const activities =
-    await Result.find()
+    const activities = await Result.find()
+      .populate("userId", "username email")
+      .sort({ createdAt: -1 })
+      .limit(10);
 
-    .populate(
-      "user",
-      "name email"
-    )
-
-    .sort({
-      createdAt:-1
-    })
-
-    .limit(10);
-
-    res.json(
-      activities
-    );
+      console.log(activities);
+    res.json(activities);
 
   }
 
-  catch(error){
+  catch (error) {
+
+    console.log(error);
 
     res.status(500).json({
-      message:error.message
+      message: error.message
     });
 
   }

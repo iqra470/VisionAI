@@ -68,7 +68,19 @@ useState([]);
         }
 
       );
+      const activityRes =
+await axios.get(
 
+ "http://localhost:5000/api/admin/activity",
+
+ {
+  headers:{
+   Authorization:
+   `Bearer ${token}`
+  }
+ }
+
+);
       setStats(
         statsRes.data
       );
@@ -76,6 +88,9 @@ useState([]);
       setUsers(
         usersRes.data
       );
+      setActivities(
+ activityRes.data
+);
 
     }
 
@@ -86,6 +101,19 @@ useState([]);
     }
 
   };
+     
+  const filteredUsers = users.filter(
+
+    (user) =>
+
+      user.username
+        ?.toLowerCase()
+        .includes(
+          search.toLowerCase()
+        )
+
+  );
+
 const deleteUser = async (userId) => {
 
     try {
@@ -126,38 +154,8 @@ const deleteUser = async (userId) => {
 
     }
 
-    const activityRes =
-await axios.get(
-
- "http://localhost:5000/api/admin/activity",
-
- {
-  headers:{
-   Authorization:
-   `Bearer ${token}`
-  }
- }
-
-);
-
-setActivities(
- activityRes.data
-);
-
   };
-
-  const filteredUsers = users.filter(
-
-    (user) =>
-
-      user.name
-        ?.toLowerCase()
-        .includes(
-          search.toLowerCase()
-        )
-
-  );
-
+ 
   return(
 
     <div className="p-8">
@@ -417,21 +415,15 @@ activities.map((item)=>(
 >
 
 <td className="p-3">
-
- {item.user?.name}
-
+  {item.userId?.username || "N/A"}
 </td>
 
 <td className="p-3">
-
- {item.user?.email}
-
+  {item.userId?.email || "N/A"}
 </td>
 
 <td className="p-3">
-
- {item.score}
-
+  {item.clipScore ?? 0}%
 </td>
 
 <td className="p-3">

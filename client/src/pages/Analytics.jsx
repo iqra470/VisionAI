@@ -7,14 +7,36 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  ResponsiveContainer
+  BarChart,
+  Bar,
+  Legend,
+  ResponsiveContainer,
+  Cell
 } from "recharts";
 
 const API_URL = "http://localhost:5000";
 
 export default function Analytics() {
 
-  const [analytics, setAnalytics] = useState({});
+  // const [analytics, setAnalytics] = useState({});
+  const [analytics,setAnalytics]=useState({
+
+totalImages:0,
+
+averageScore:0,
+
+highestScore:0,
+
+lowestScore:0,
+
+trend:[],
+
+comparison:[],
+
+improvement:0,
+recommendation:[]
+
+});
 
   useEffect(() => {
 
@@ -37,6 +59,7 @@ export default function Analytics() {
       }
 
     );
+    console.log(res.data);
 
     setAnalytics(res.data);
 
@@ -47,6 +70,65 @@ export default function Analytics() {
   }
 
  } 
+ const CustomTooltip = ({ active, payload }) => {
+
+  if (active && payload && payload.length) {
+
+    const data = payload[0].payload;
+
+    return (
+
+      <div className="bg-white p-4 rounded-xl shadow-lg border">
+
+        <h3 className="font-bold text-lg">
+          {data.image}
+        </h3>
+
+        <p>
+          Score : <b>{data.score}%</b>
+        </p>
+
+        <p>
+          Status :
+          <span className="font-bold">
+            {" "}{data.status}
+          </span>
+        </p>
+
+        <p className="mt-2 text-gray-600">
+          {data.recommendation}
+        </p>
+
+      </div>
+
+    );
+
+  }
+
+  return null;
+
+};
+const getBarColor = (status) => {
+
+  switch (status) {
+
+    case "Excellent":
+      return "#22c55e";
+
+    case "Good":
+      return "#3b82f6";
+
+    case "Average":
+      return "#facc15";
+
+    case "Poor":
+      return "#ef4444";
+
+    default:
+      return "#8b5cf6";
+  }
+
+};
  return (
 
   <div className="space-y-8">
@@ -75,8 +157,8 @@ export default function Analytics() {
 
         <p className="text-3xl font-bold text-blue-500">
           {Number(
-            analytics?.averageScore || 0
-          ).toFixed(1)}%
+            analytics?.averageScore?.toFixed(1) || "0.0"
+          )}%
         </p>
       </div>
 
@@ -137,8 +219,223 @@ export default function Analytics() {
       </ResponsiveContainer>
 
     </div>
+   
+   <div className="bg-white p-6 rounded-3xl shadow-lg mt-8">
 
+<h2 className="text-2xl font-bold mb-5">
+
+🆚 Prompt Comparison
+
+</h2>
+
+<ResponsiveContainer
+
+width="100%"
+
+height={350}
+
+>
+
+<BarChart
+
+data={analytics.comparison}
+
+>
+
+<CartesianGrid strokeDasharray="3 3"/>
+
+<XAxis
+
+dataKey="image"
+
+/>
+
+<YAxis/>
+
+<Tooltip/>
+
+<Legend/>
+
+<Bar
+
+dataKey="original"
+
+fill="#ef4444"
+
+/>
+
+<Bar
+
+dataKey="refined"
+
+fill="#10b981"
+
+/>
+
+</BarChart>
+
+</ResponsiveContainer>
+
+</div>
+
+<div className="bg-gradient-to-r
+
+from-green-400
+
+to-blue-500
+
+text-white
+
+rounded-3xl
+
+p-6
+
+mt-8
+
+shadow-lg">
+
+<h2 className="text-2xl font-bold">
+
+🚀 Average Prompt Improvement
+
+</h2>
+
+<p className="text-5xl font-bold mt-3">
+
+{analytics?.improvement?.toFixed(1) || "0.0"}%
+
+</p>
+
+<p>
+
+Prompt refinement improved image quality.
+
+</p>
+
+</div>
+
+{/* <div className="bg-white
+
+p-6
+
+rounded-3xl
+
+shadow-lg
+
+mt-8">
+
+<h2
+
+className="text-2xl
+
+font-bold
+
+mb-5">
+
+🤖 AI Recommendation
+
+</h2>
+
+{
+
+analytics.recommendation.map((item,index)=>(
+
+<div
+
+key={index}
+
+className="flex
+
+justify-between
+
+border-b
+
+py-3">
+
+<span>
+
+Image {index+1}
+
+</span>
+
+<span>
+
+{item.score}%
+
+</span>
+
+<span>
+
+{item.status}
+
+</span>
+
+</div>
+
+))
+
+}
+
+</div> */}
+<div className="bg-white p-6 rounded-3xl shadow-lg mt-8">
+
+  <h2 className="text-2xl font-bold mb-6">
+
+    🤖 AI Recommendation Analysis
+
+  </h2>
+
+  <ResponsiveContainer
+    width="100%"
+    height={400}
+  >
+
+    <BarChart
+      data={analytics?.recommendation || []}
+    >
+
+      <CartesianGrid strokeDasharray="3 3" />
+
+      <XAxis
+        dataKey="image"
+      />
+
+      <YAxis />
+
+      <Tooltip
+        content={<CustomTooltip />}
+      />
+
+      <Bar
+        dataKey="score"
+        radius={[10,10,0,0]}
+      >
+
+        {(analytics?.recommendation || []).map(
+
+          (entry,index)=>(
+
+            <Cell
+
+              key={index}
+
+              fill={getBarColor(entry.status)}
+
+            />
+
+          )
+
+        )}
+
+      </Bar>
+
+    </BarChart>
+
+  </ResponsiveContainer>
+
+</div>
   </div>
+  
 
 );
 }
