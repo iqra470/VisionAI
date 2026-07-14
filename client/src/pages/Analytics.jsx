@@ -14,7 +14,7 @@ import {
   Cell
 } from "recharts";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "http://visionai-production-5752.up.railway.app";
 
 export default function Analytics() {
 

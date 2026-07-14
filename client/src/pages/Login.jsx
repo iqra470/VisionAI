@@ -33,7 +33,7 @@ const handleLogin = async () => {
 
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/auth/login",
+      "http://visionai-production-5752.up.railway.app/api/auth/login",
       {
         email,
         password,

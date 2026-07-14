@@ -44,7 +44,7 @@ useState([]);
       const statsRes =
       await axios.get(
 
-        "http://localhost:5000/api/admin/stats",
+        "https://visionai-production-5752.up.railway.app/api/admin/stats",
 
         {
           headers:{
@@ -58,7 +58,7 @@ useState([]);
       const usersRes =
       await axios.get(
 
-        "http://localhost:5000/api/admin/users",
+        "http://visionai-production-5752.up.railway.app/api/admin/users",
 
         {
           headers:{
@@ -71,7 +71,7 @@ useState([]);
       const activityRes =
 await axios.get(
 
- "http://localhost:5000/api/admin/activity",
+ "http://visionai-production-5752.up.railway.app/api/admin/activity",
 
  {
   headers:{

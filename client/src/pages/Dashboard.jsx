@@ -105,7 +105,7 @@ const [remainingTrials,setRemainingTrials]=useState(MAX_TRIALS);
   // API URL
   // =====================================================
 
-  const API_URL = "http://localhost:5000";
+  const API_URL = "http://visionai-production-5752.up.railway.app";
 
 
 

@@ -30,7 +30,7 @@ export default function Register() {
   // 🔥 REGISTER FUNCTION
  const handleRegister = async () => {
   try {
-    const res = await axios.post("http://localhost:5000/api/auth/register", {
+    const res = await axios.post("http://visionai-production-5752.up.railway.app/api/auth/register", {
       username,
       email,
       password,
