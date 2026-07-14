@@ -9,7 +9,7 @@ export default function Login() {
   const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
-
+const API_URL = import.meta.env.VITE_API_URL;
   // 🔥 VALIDATION
   const validate = () => {
     let newErrors = {};
@@ -33,7 +33,7 @@ const handleLogin = async () => {
 
   try {
     const res = await axios.post(
-      "http://visionai-production-5752.up.railway.app/api/auth/login",
+      `${API_URL}/api/auth/login`,
       {
         email,
         password,

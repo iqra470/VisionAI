@@ -33,6 +33,7 @@ useState([]);
     fetchData();
 
   },[]);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const fetchData = async()=>{
 
@@ -44,8 +45,9 @@ useState([]);
       const statsRes =
       await axios.get(
 
-        "https://visionai-production-5752.up.railway.app/api/admin/stats",
-
+          `${API_URL}/api/admin/stats`
+        // "https://visionai-production-5752.up.railway.app/api/admin/stats",
+      ,
         {
           headers:{
             Authorization:
@@ -58,7 +60,7 @@ useState([]);
       const usersRes =
       await axios.get(
 
-        "http://visionai-production-5752.up.railway.app/api/admin/users",
+        `${API_URL}/api/admin/users`,
 
         {
           headers:{
@@ -71,7 +73,7 @@ useState([]);
       const activityRes =
 await axios.get(
 
- "http://visionai-production-5752.up.railway.app/api/admin/activity",
+        `${API_URL}/api/admin/activity`,
 
  {
   headers:{

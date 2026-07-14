@@ -105,9 +105,9 @@ const [remainingTrials,setRemainingTrials]=useState(MAX_TRIALS);
   // API URL
   // =====================================================
 
-  const API_URL = "http://visionai-production-5752.up.railway.app";
+  // const API_URL = "http://visionai-production-5752.up.railway.app";
 
-
+   const API_URL = import.meta.env.VITE_API_URL;
 
   // =====================================================
   // IMAGE UPLOAD

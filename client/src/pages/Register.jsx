@@ -9,7 +9,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
 
   const [errors, setErrors] = useState({}); // 🔥 errors state
-
+const API_URL = import.meta.env.VITE_API_URL;
   // 🔥 VALIDATION FUNCTION
   const validate = () => {
     let newErrors = {};
@@ -30,7 +30,7 @@ export default function Register() {
   // 🔥 REGISTER FUNCTION
  const handleRegister = async () => {
   try {
-    const res = await axios.post("http://visionai-production-5752.up.railway.app/api/auth/register", {
+    const res = await axios.post(`${API_URL}/api/auth/register`, {
       username,
       email,
       password,
