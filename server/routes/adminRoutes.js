@@ -6,7 +6,7 @@ const protect =
 require("../middleware/auth");
 
 const adminOnly =
-require("../middleware/adminMiddleware");
+require("../middleware/adminmiddleware");
 
 const {
 
