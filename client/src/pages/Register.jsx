@@ -41,6 +41,10 @@ const API_URL = import.meta.env.VITE_API_URL;
 
   } catch (err) {
     const msg = err.response?.data?.message || "Error";
+      console.log("Response:", err.response?.data);
+
+  const msg = err.response?.data?.message || "Error";
+
 
     let newErrors = {};
 
