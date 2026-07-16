@@ -15,5 +15,5 @@ safetensors
 open_clip_torch
 
 Pillow
-open_clip
+
 gunicorn
