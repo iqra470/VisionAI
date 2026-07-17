@@ -132,7 +132,7 @@ const deleteUser = async (userId) => {
 
       await axios.delete(
 
-        `http://localhost:5000/api/admin/users/${userId}`,
+        `${API_URL}/api/admin/users/${userId}`,
 
         {
           headers: {
