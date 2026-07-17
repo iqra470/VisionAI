@@ -16,8 +16,10 @@ router.use(authMiddleware);
 // FLASK / NGROK URL
 // =====================================================
 
-const AI_URL =
-  "https://euphemism-helpless-unfitted.ngrok-free.dev";
+const AI_URL = process.env.AI_URL
+
+// const AI_URL =
+//   "https://euphemism-helpless-unfitted.ngrok-free.dev";
 
 
 // =====================================================
