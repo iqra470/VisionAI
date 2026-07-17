@@ -56,7 +56,7 @@ export default function Home() {
   {/* LEFT IMAGE */}
   <div className="bg-purple-100 p-6 rounded-2xl shadow-lg">
     <img
-      src="src/assets/s2.webp"
+      src="/assets/s2.webp"
       alt="preview"
       className="rounded-xl w-full"
     />
@@ -99,7 +99,7 @@ export default function Home() {
   {/* RIGHT IMAGE */}
   <div className="bg-purple-100 p-6 rounded-2xl shadow-lg">
     <img
-      src="src/assets/s1.webp"
+    src="/assets/s2.webp"
       alt="preview"
       className="rounded-xl w-full"
     />
@@ -113,7 +113,8 @@ export default function Home() {
   {/* LEFT IMAGE */}
   <div className="bg-blue-100 p-6 rounded-2xl shadow-lg">
     <img
-      src="src/assets/s3.png"
+    
+    src="/assets/s3.png"
       alt="preview"
       className="rounded-xl w-full"
     />
@@ -189,16 +190,15 @@ export default function Home() {
   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-7xl mx-auto">
 
     {[
-      { title: "3D Animation", img: "/assets/img1.jpg" },
-      { title: "Bauhaus", img: "/assets/img2.jpg" },
-      { title: "Doodle Art", img: "/assets/img3.jpg" },
-      { title: "View from Behind", img: "/assets/img4.jpg" },
-      { title: "Anime", img: "/assets/img5.jpg" },
-      { title: "Constructivism", img: "/assets/img6.jpg" },
-      { title: "Sketch Drawing", img: "/assets/img7.jpg" },
-      { title: "Three-Sided View", img: "/assets/img8.jpg" },
-      { title: "Watercolor", img: "/assets/img9.jpg" },
-      { title: "Victorian", img: "/assets/img10.jpg" },
+      { title: "3D Animation", img: "/assets/s1.webp" },
+      { title: "Bauhaus", img: "/assets/s3.png" },
+      { title: "Doodle Art", img: "/assets/s2.webg" },
+      { title: "View from Behind", img: "/assets/s5.jpg" },
+      { title: "Anime", img: "/assets/s6.jpg" },
+      { title: "Constructivism", img: "/assets/s7.jpg" },
+      { title: "Sketch Drawing", img: "/assets/s8.jpg" },
+      { title: "Three-Sided View", img: "/assets/s9.jpg" },
+      { title: "Watercolor", img: "/assets/s10.jpg" },
     ].map((item, i) => (
       
       <div
