@@ -192,13 +192,13 @@ export default function Home() {
     {[
       { title: "3D Animation", img: "/assets/s1.webp" },
       { title: "Bauhaus", img: "/assets/s3.png" },
-      { title: "Doodle Art", img: "/assets/s2.webg" },
-      { title: "View from Behind", img: "/assets/s5.jpg" },
-      { title: "Anime", img: "/assets/s6.jpg" },
-      { title: "Constructivism", img: "/assets/s7.jpg" },
-      { title: "Sketch Drawing", img: "/assets/s8.jpg" },
-      { title: "Three-Sided View", img: "/assets/s9.jpg" },
-      { title: "Watercolor", img: "/assets/s10.jpg" },
+      { title: "Doodle Art", img: "/assets/images.jpg" },
+      { title: "View from Behind", img: "/assets/images (1).jpg" },
+      { title: "Anime", img: "/assets/images (2).jpg" },
+      { title: "Constructivism", img: "/assets/images (3).jpg" },
+      { title: "Sketch Drawing", img: "/assets/images (4).jpg" },
+      { title: "Three-Sided View", img: "/assets/images (5).jpg" },
+      { title: "Watercolor", img: "/assets/images (6).jpg" },
     ].map((item, i) => (
       
       <div
